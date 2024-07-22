@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sliders de Características Físicas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #2c3e50; /* Fondo oscuro para mejor contraste */
+            color: white; /* Texto blanco */
+        }
+
+        .slider-container {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px 0;
+        }
+
+        .slider {
+            width: 100%;
+            -webkit-appearance: none; /* Eliminar apariencia por defecto en navegadores WebKit */
+            background: transparent; /* Fondo transparente para la pista del slider */
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #6a0dad; /* Color morado tirando a azul */
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .slider::-webkit-slider-runnable-track {
+            background: #3a3a3a; /* Color de la pista del slider */
+            height: 8px;
+            border-radius: 5px;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #6a0dad; /* Color morado tirando a azul */
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .slider::-moz-range-track {
+            background: #3a3a3a; /* Color de la pista del slider */
+            height: 8px;
+            border-radius: 5px;
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            top: -10px;
+        }
+
+        .slider-label {
+            position: relative;
+            color: white; /* Texto blanco */
+        }
+
+        .slider-label:nth-of-type(1)::after {
+            content: "Weak";
+            position: absolute;
+            left: 0;
+        }
+
+        .slider-label:nth-of-type(2)::after {
+            content: "Strong";
+            position: absolute;
+            right: 0;
+        }
+
+        .slider-value {
+            margin-top: 10px;
+            font-size: 1.2em;
+            color: white; /* Texto blanco */
+        }
+
+        .slider-section {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slider-container">
+        <div class="slider-section">
+            <div class="slider-labels">
+                <div class="slider-label">Strength</div>
+                <div class="slider-label"></div>
+            </div>
+            <input type="range" min="0" max="10" step="0.1" value="5" class="slider" id="strength">
+            <div class="slider-value" id="strengthValue">5</div>
+        </div>
+
+        <div class="slider-section">
+            <div class="slider-labels">
+                <div class="slider-label">Agility</div>
+                <div class="slider-label"></div>
+            </div>
+            <input type="range" min="0" max="10" step="0.1" value="5" class="slider" id="agility">
+            <div class="slider-value" id="agilityValue">5</div>
+        </div>
+
+        <div class="slider-section">
+            <div class="slider-labels">
+                <div class="slider-label">Endurance</div>
+                <div class="slider-label"></div>
+            </div>
+            <input type="range" min="0" max="10" step="0.1" value="5" class="slider" id="endurance">
+            <div class="slider-value" id="enduranceValue">5</div>
+        </div>
+
+        <div class="slider-section">
+            <div class="slider-labels">
+                <div class="slider-label">Speed</div>
+                <div class="slider-label"></div>
+            </div>
+            <input type="range" min="0" max="10" step="0.1" value="5" class="slider" id="speed">
+            <div class="slider-value" id="speedValue">5</div>
+        </div>
+
+        <div class="slider-section">
+            <div class="slider-labels">
+                <div class="slider-label">Flexibility</div>
+                <div class="slider-label"></div>
+            </div>
+            <input type="range" min="0" max="10" step="0.1" value="5" class="slider" id="flexibility">
+            <div class="slider-value" id="flexibilityValue">5</div>
+        </div>
+
+    </div>
+
+    <script>
+        const sliders = [
+            { id: 'strength', valueId: 'strengthValue' },
+            { id: 'agility', valueId: 'agilityValue' },
+            { id: 'endurance', valueId: 'enduranceValue' },
+            { id: 'speed', valueId: 'speedValue' },
+            { id: 'flexibility', valueId: 'flexibilityValue' }
+        ];
+
+        sliders.forEach(slider => {
+            const element = document.getElementById(slider.id);
+            const valueElement = document.getElementById(slider.valueId);
+
+            element.addEventListener('input', function() {
+                valueElement.textContent = element.value;
+            });
+        });
+    </script>
+
+</body>
+</html>
