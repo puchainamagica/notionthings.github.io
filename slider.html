@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider con Números Decimales</title>
+    <style>
+        .slider-container {
+            width: 300px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        .slider {
+            width: 100%;
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            top: -10px;
+        }
+
+        .slider-label {
+            position: relative;
+        }
+
+        .slider-label:first-child::after,
+        .slider-label:last-child::after {
+            content: "text";
+            position: absolute;
+            top: 20px;
+            width: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .slider-value {
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slider-container">
+    <div class="slider-labels">
+        <div class="slider-label" id="start-text">0</div>
+        <div class="slider-label" id="end-text">10</div>
+    </div>
+    <input type="range" min="0" max="10" step="0.1" value="0" class="slider" id="mySlider">
+    <div class="slider-value" id="sliderValue">0</div>
+</div>
+
+<script>
+    const slider = document.getElementById('mySlider');
+    const sliderValue = document.getElementById('sliderValue');
+
+    slider.addEventListener('input', function() {
+        sliderValue.textContent = slider.value;
+    });
+</script>
+
+</body>
+</html>
