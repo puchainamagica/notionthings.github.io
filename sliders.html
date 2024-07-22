@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sliders de Características</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .slider-container {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px 0;
+        }
+
+        .slider {
+            width: 100%;
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            top: -10px;
+        }
+
+        .slider-label {
+            position: relative;
+        }
+
+        .slider-label:first-child::after,
+        .slider-label:last-child::after {
+            content: "text";
+            position: absolute;
+            top: 20px;
+            width: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .slider-label:nth-of-type(1)::after {
+            content: "Bad";
+            position: absolute;
+            left: 0;
+        }
+
+        .slider-label:nth-of-type(2)::after {
+            content: "Good";
+            position: absolute;
+            right: 0;
+        }
+
+        .slider-label:nth-of-type(3)::after {
+            content: "Not Confident";
+            position: absolute;
+            left: 0;
+        }
+
+        .slider-label:nth-of-type(4)::after {
+            content: "Very Confident";
+            position: absolute;
+            right: 0;
+        }
+
+        .slider-label:nth-of-type(5)::after {
+            content: "Low";
+            position: absolute;
+            left: 0;
+        }
+
+        .slider-label:nth-of-type(6)::after {
+            content: "High";
+            position: absolute;
+            right: 0;
+        }
+
+        .slider-value {
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+
+        .slider-section {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slider-container">
+        <div class="slider-section">
+            <div class="slider-labels">
+                <div class="slider-label">Self Control</div>
+                <div class="slider-label"></div>
+            </div>
+            <input type="range" min="0" max="10" step="0.1" value="5" class="slider" id="selfControl">
+            <div class="slider-value" id="selfControlValue">5</div>
+        </div>
+
+        <div class="slider-section">
+            <div class="slider-labels">
+                <div class="slider-label">Intelligence Level</div>
+                <div class="slider-label"></div>
+            </div>
+            <input type="range" min="0" max="10" step="0.1" value="5" class="slider" id="intelligenceLevel">
+            <div class="slider-value" id="intelligenceLevelValue">5</div>
+        </div>
+
+        <div class="slider-section">
+            <div class="slider-labels">
+                <div class="slider-label">Confidence Level</div>
+                <div class="slider-label"></div>
+            </div>
+            <input type="range" min="0" max="10" step="0.1" value="5" class="slider" id="confidenceLevel">
+            <div class="slider-value" id="confidenceLevelValue">5</div>
+        </div>
+
+        <div class="slider-section">
+            <div class="slider-labels">
+                <div class="slider-label">Strength</div>
+                <div class="slider-label"></div>
+            </div>
+            <input type="range" min="0" max="10" step="0.1" value="5" class="slider" id="strength">
+            <div class="slider-value" id="strengthValue">5</div>
+        </div>
+
+        <div class="slider-section">
+            <div class="slider-labels">
+                <div class="slider-label">Wisdom</div>
+                <div class="slider-label"></div>
+            </div>
+            <input type="range" min="0" max="10" step="0.1" value="5" class="slider" id="wisdom">
+            <div class="slider-value" id="wisdomValue">5</div>
+        </div>
+    </div>
+
+    <script>
+        const sliders = [
+            { id: 'selfControl', valueId: 'selfControlValue' },
+            { id: 'intelligenceLevel', valueId: 'intelligenceLevelValue' },
+            { id: 'confidenceLevel', valueId: 'confidenceLevelValue' },
+            { id: 'strength', valueId: 'strengthValue' },
+            { id: 'wisdom', valueId: 'wisdomValue' }
+        ];
+
+        sliders.forEach(slider => {
+            const element = document.getElementById(slider.id);
+            const valueElement = document.getElementById(slider.valueId);
+
+            element.addEventListener('input', function() {
+                valueElement.textContent = element.value;
+            });
+        });
+    </script>
+
+</body>
+</html>
